@@ -1,40 +1,44 @@
-# Aiogram Webhook Example with FastAPI and asyncpg
+# Aiogram Webhook with FastAPI and asyncpg
 
-This project demonstrates an Aiogram bot setup using FastAPI as the webhook server and asyncpg for PostgreSQL interactions.
+This repository demonstrates how to set up an `aiogram` webhook with `FastAPI` and `asyncpg` for Telegram bot deployment.
 
-## Setup and Run Instructions
+## Steps to Run
 
-1. **Clone the Repository and Navigate to the Project Folder**
+1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/yourrepository.git
-   cd yourrepository
-Set Up a Virtual Environment
+   git clone https://github.com/your-username/aiogram-fastapi-webhook.git
+   cd aiogram-fastapi-webhook
+   ```
 
-bash
-Copy code
-python3 -m venv venv && source venv/bin/activate
-Install Requirements
+2. Set up a virtual environment:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # For Linux/MacOS
+   venv\Scripts\activate  # For Windows
+   ```
 
-bash
-Copy code
-pip install -r requirements.txt
-Run Ngrok on Port 8000
-Ngrok is required to expose your FastAPI app to the public internet, which is necessary for the Telegram webhook.
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-bash
-Copy code
-ngrok http 8000
-Ngrok will output a public URL like https://<subdomain>.ngrok.io. Note this URL, as it will be used for setting up the Telegram webhook.
+4. Run ngrok to expose the local server:
+   ```bash
+   ngrok http 8000
+   ```
 
-Configure the Application Edit config.py and add your bot token, database settings, and the Ngrok URL you received in the previous step:
+5. Open the generated ngrok URL and update the `WEBHOOK_URL` in `data.py` to match the ngrok URL.
 
-python
-Copy code
-BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE'
-DATABASE_URL = 'YOUR_DATABASE_URL_HERE'
-WEBHOOK_URL = 'https://<subdomain>.ngrok.io/webhook'
-Run the FastAPI Application with Uvicorn
+6. Modify `data.py` to configure your database connection and other bot parameters.
 
-bash
-Copy code
-uvicorn app:app --port 8000
+7. Start the server:
+   ```bash
+   uvicorn app.main:app --port 8000
+   ```
+
+The bot will now be running and ready to accept webhook requests.
+
+## Important Notes
+
+- Make sure you have a valid `asyncpg` connection set up in `data.py`.
+- The bot will use ngrok to forward incoming requests to your local FastAPI server.
