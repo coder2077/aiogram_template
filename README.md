@@ -1,13 +1,13 @@
-# Aiogram Webhook with FastAPI and asyncpg
+# Telegram Bot Template with aiogram, FastAPI, and asyncpg
 
-This repository demonstrates how to set up an `aiogram` webhook with `FastAPI` and `asyncpg` for Telegram bot deployment.
+This template project demonstrates how to build a Telegram bot with `aiogram` and set up a webhook using `FastAPI`, while using `asyncpg` for database interaction
 
 ## Steps to Run
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/aiogram-fastapi-webhook.git
-   cd aiogram-fastapi-webhook
+   git clone https://github.com/coder2077/aiogram-template.git
+   cd aiogram-template
    ```
 
 2. Set up a virtual environment:
@@ -27,18 +27,11 @@ This repository demonstrates how to set up an `aiogram` webhook with `FastAPI` a
    ngrok http 8000
    ```
 
-5. Open the generated ngrok URL and update the `WEBHOOK_URL` in `data.py` to match the ngrok URL.
+5. Modify `data.py` to configure parameters.
 
-6. Modify `data.py` to configure your database connection and other bot parameters.
-
-7. Start the server:
+6. Start the server:
    ```bash
    uvicorn app.main:app --port 8000
    ```
 
-The bot will now be running and ready to accept webhook requests.
-
-## Important Notes
-
-- Make sure you have a valid `asyncpg` connection set up in `data.py`.
-- The bot will use ngrok to forward incoming requests to your local FastAPI server.
+The bot will now be running, send /start to the bot.
