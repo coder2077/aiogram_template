@@ -1,0 +1,12 @@
+[Unit]
+After=network.target
+Description=something
+
+[Service]
+Type=simple
+WorkingDirectory=/path/to/project/
+ExecStart=/path/to/project/venv/bin/uvicorn app:app --host 0.0.0.0 --port 8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
